@@ -1,6 +1,6 @@
 var request = require('request');
 var users = require('./whobot.json');
-var XMLHttpRequest = require("xmlhttprequest");
+var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
 var randomWhoPrev = -1;
 
 function getRamdomOrg(min, max) {
