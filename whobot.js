@@ -3,6 +3,14 @@ var users = require('./whobot.json');
 var Random = require("random-js");
 var randomWhoPrev = -1;
 
+function getRamdomOrg(min, max) {
+  var xhr = new XMLHttpRequest();
+  var url = 'https://www.random.org/integers/?num=1&min=' + min + '&max=' + max + '&col=1&base=10&format=plain&rnd=new';
+  xhr.open('GET', url, false);
+  xhr.send();
+  return parseInt(xhr.responseText);
+}
+
 module.exports = function (req, res, next) {
   console.log(req.body);
   /*token
@@ -20,9 +28,8 @@ module.exports = function (req, res, next) {
   var botPayload = {}; 
   var randomWho = -1;
 
-  for (; randomWho == -1 || randomWhoPrev == randomWho || users[randomWhoPrev] == users[randomWho] || req.body.user_name == users[randomWho];){
-    var random = new Random(Random.engines.mt19937().autoSeed());
-    randomWho = random.integer(0, users.length - 1);
+  for (; randomWho == -1 || users[randomWhoPrev] == users[randomWho] || req.body.user_name == users[randomWho];) {
+    randomWho = getRamdomOrg(0, users.length - 1);
   }
   randomWhoPrev = randomWho;
 
