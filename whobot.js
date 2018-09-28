@@ -4,7 +4,7 @@ var XMLHttpRequest = require("xmlhttprequest");
 var randomWhoPrev = -1;
 
 function getRamdomOrg(min, max) {
-  var xhr = new xmlhttprequest.XMLHttpRequest();
+  var xhr = new XMLHttpRequest();
   var url = 'https://www.random.org/integers/?num=1&min=' + min + '&max=' + max + '&col=1&base=10&format=plain&rnd=new';
   xhr.open('GET', url, false);
   xhr.send();
