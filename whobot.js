@@ -28,7 +28,7 @@ module.exports = function (req, res, next) {
   var botPayload = {}; 
   var randomWho = -1;
 
-  for (; randomWho == -1 || users[randomWhoPrev] == users[randomWho] || req.body.user_name == users[randomWho];) {
+  for (; randomWho == -1  || req.body.user_name == users[randomWho];) {
     randomWho = getRamdomOrg(0, users.length - 1);
   }
   randomWhoPrev = randomWho;
